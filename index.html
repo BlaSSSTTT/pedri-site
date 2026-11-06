@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Педрі — стрічка новин</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0d1a; --panel:#131631; --panel2:#1a1e40; --line:#262b57;
+    --text:#eef0ff; --muted:#9aa0c7; --blau:#1f4bd8; --grana:#a50044; --gold:#f5c542;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,sans-serif}
+  a{color:inherit}
+  .wrap{max-width:860px;margin:0 auto;padding:0 18px 60px}
+  header{
+    position:relative;overflow:hidden;padding:34px 0 26px;
+    background:linear-gradient(90deg,var(--grana) 0 50%,var(--blau) 50% 100%);
+  }
+  header::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,13,26,.25),rgba(11,13,26,.92))}
+  header .wrap{position:relative;z-index:1;padding-bottom:0}
+  .num{font:900 120px/0.8 Archivo,sans-serif;color:rgba(255,255,255,.12);position:absolute;right:10px;top:-6px;letter-spacing:-4px}
+  h1{font:900 44px/1 Archivo,sans-serif;margin:0;letter-spacing:-1px}
+  .sub{color:#d8dbf5;margin:8px 0 18px;max-width:560px}
+  .profiles{display:flex;gap:8px;flex-wrap:wrap}
+  .profiles a{text-decoration:none;font:600 13px Inter;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18)}
+  .profiles a:hover{background:rgba(255,255,255,.22)}
+  .bar{position:sticky;top:0;z-index:5;background:rgba(11,13,26,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar .wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 18px}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap}
+  .tab{font:600 13px Inter;color:var(--muted);background:var(--panel);border:1px solid var(--line);padding:7px 12px;border-radius:9px;cursor:pointer}
+  .tab[aria-pressed="true"]{color:#fff;background:var(--blau);border-color:var(--blau)}
+  .tab .c{opacity:.7;margin-left:4px;font-weight:500}
+  input[type=search]{flex:1;min-width:160px;background:var(--panel);border:1px solid var(--line);color:var(--text);padding:8px 12px;border-radius:9px;font:14px Inter}
+  .status{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:13px;padding:14px 0 6px;flex-wrap:wrap}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#3ad07a;margin-right:6px;box-shadow:0 0 0 3px rgba(58,208,122,.2)}
+  .dot.stale{background:var(--gold);box-shadow:0 0 0 3px rgba(245,197,66,.2)}
+  .day{font:700 12px Archivo;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 8px}
+  .card{display:block;text-decoration:none;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px;transition:border-color .15s,transform .15s}
+  .card:hover{border-color:#4a54a8;transform:translateY(-1px)}
+  .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-bottom:6px}
+  .src{font-weight:600;color:#c9cdf2}
+  .tag{font:700 10.5px Inter;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:6px}
+  .tag.news{background:rgba(31,75,216,.22);color:#9db3ff}
+  .tag.social{background:rgba(165,0,68,.28);color:#ff9cc4}
+  .tag.video{background:rgba(245,197,66,.18);color:var(--gold)}
+  .new{font:700 10.5px Inter;background:var(--gold);color:#1a1300;padding:2px 7px;border-radius:6px}
+  .title{font:700 16.5px/1.35 Archivo,sans-serif;margin:0}
+  .gist{color:#c3c7e8;margin:8px 0 0;font-size:14.5px;line-height:1.6}
+  .go{font-size:12.5px;color:#8fa6ff;margin-top:8px;display:inline-block}
+  .empty{text-align:center;color:var(--muted);padding:50px 10px;border:1px dashed var(--line);border-radius:14px;margin-top:20px}
+  .note{color:var(--muted);font-size:12.5px;margin-top:30px;border-top:1px solid var(--line);padding-top:14px}
+  @media (max-width:560px){h1{font-size:34px}.num{font-size:90px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="num">8</div>
+    <h1>ПЕДРІ</h1>
+    <p class="sub">Свіжі новини, пости й відео про Педрі з медіа та соцмереж. Кожна картка веде на першоджерело.</p>
+    <div class="profiles">
+      <a href="https://www.instagram.com/pedri/" target="_blank" rel="noopener">Instagram @pedri</a>
+      <a href="https://x.com/Pedri" target="_blank" rel="noopener">X @Pedri</a>
+      <a href="https://www.fcbarcelona.com/en/football/first-team/players/70486/pedro-gonzalez-lopez" target="_blank" rel="noopener">FC Barcelona</a>
+    </div>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="tabs" id="tabs">
+      <button class="tab" data-f="all" aria-pressed="true">Усе<span class="c" id="c-all"></span></button>
+      <button class="tab" data-f="news" aria-pressed="false">Новини<span class="c" id="c-news"></span></button>
+      <button class="tab" data-f="social" aria-pressed="false">Соцмережі<span class="c" id="c-social"></span></button>
+      <button class="tab" data-f="video" aria-pressed="false">Відео<span class="c" id="c-video"></span></button>
+    </div>
+    <input type="search" id="q" placeholder="Пошук: травма, Атлетіко, інтерв'ю…">
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="status">
+    <span id="upd"><span class="dot stale"></span>Завантаження…</span>
+    <span id="cnt"></span>
+  </div>
+  <div id="list"></div>
+  <p class="note">Стрічка оновлюється автоматично кожні 30 хвилин зі стрічок Google News, Bing News, Reddit і YouTube. Пости з Instagram і X потрапляють сюди тоді, коли про них пишуть медіа. Самі профілі відкриваються кнопками вгорі.</p>
+</main>
+
+<script>
+(function(){
+  const CAT = {news:"Новина", social:"Соцмережі", video:"Відео"};
+  const MONTHS = ["січня","лютого","березня","квітня","травня","червня","липня","серпня","вересня","жовтня","листопада","грудня"];
+  let items = [], filter = "all", query = "", lastRun = null;
+
+  let lastSeen = 0;
+  try { lastSeen = Number(localStorage.getItem("pedri_seen") || 0); } catch(e) {}
+  const visitStart = Date.now();
+  window.addEventListener("pagehide", () => { try { localStorage.setItem("pedri_seen", String(visitStart)); } catch(e) {} });
+
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const safeUrl = u => /^https?:\/\//i.test(u || "") ? u : "#";
+
+  function ago(ts){
+    const m = Math.round((Date.now() - ts) / 60000);
+    if (m < 1) return "щойно";
+    if (m < 60) return m + " хв тому";
+    const h = Math.round(m / 60);
+    if (h < 24) return h + " год тому";
+    const d = Math.round(h / 24);
+    return d + " дн тому";
+  }
+  const LANG = {es:"оригінал іспанською", en:"оригінал англійською", ru:"оригінал російською", ca:"оригінал каталанською", it:"оригінал італійською", fr:"оригінал французькою", de:"оригінал німецькою", pt:"оригінал португальською"};
+  function when(ts){
+    const d = new Date(ts);
+    const hm = String(d.getHours()).padStart(2,"0") + ":" + String(d.getMinutes()).padStart(2,"0");
+    const date = d.getDate() + " " + MONTHS[d.getMonth()] + (d.getFullYear() !== new Date().getFullYear() ? " " + d.getFullYear() : "");
+    const age = Date.now() - ts;
+    return date + ", " + hm + (age < 48 * 3600 * 1000 ? " (" + ago(ts) + ")" : "");
+  }
+  function dayLabel(ts){
+    const d = new Date(ts), now = new Date();
+    const strip = x => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
+    const diff = Math.round((strip(now) - strip(d)) / 86400000);
+    if (diff === 0) return "Сьогодні";
+    if (diff === 1) return "Вчора";
+    return d.getDate() + " " + MONTHS[d.getMonth()] + (d.getFullYear() !== now.getFullYear() ? " " + d.getFullYear() : "");
+  }
+
+  function render(){
+    const counts = {all: items.length, news:0, social:0, video:0};
+    items.forEach(i => { if (counts[i.category] !== undefined) counts[i.category]++; });
+    for (const k in counts) $("c-" + k).textContent = counts[k] ? counts[k] : "";
+
+    const q = query.trim().toLowerCase();
+    const shown = items.filter(i =>
+      (filter === "all" || i.category === filter) &&
+      (!q || (i.title + " " + i.gist + " " + i.source).toLowerCase().includes(q))
+    );
+    $("cnt").textContent = shown.length ? shown.length + " матеріалів" : "";
+
+    if (!items.length) {
+      $("list").innerHTML = '<div class="empty">Поки порожньо — перше оновлення ось-ось додасть матеріали.</div>';
+      return;
+    }
+    if (!shown.length) {
+      $("list").innerHTML = '<div class="empty">Нічого не знайдено за цим фільтром.</div>';
+      return;
+    }
+    let html = "", lastDay = "";
+    for (const i of shown) {
+      const day = dayLabel(i.ts);
+      if (day !== lastDay) { html += '<div class="day">' + esc(day) + '</div>'; lastDay = day; }
+      const isNew = lastSeen && i.foundTs > lastSeen;
+      html += '<a class="card" href="' + esc(safeUrl(i.url)) + '" target="_blank" rel="noopener">' +
+        '<div class="meta">' +
+          '<span class="tag ' + esc(i.category) + '">' + esc(CAT[i.category] || "Новина") + '</span>' +
+          (isNew ? '<span class="new">Нове</span>' : '') +
+          '<span class="src">' + esc(i.source) + '</span>' +
+          '<span>· ' + esc(i.hasDate ? when(i.ts) : "дата публікації невідома") + '</span>' +
+          (i.lang && i.lang !== "uk" ? '<span>· ' + esc(LANG[i.lang] || ("мова: " + i.lang.toUpperCase())) + '</span>' : '') +
+        '</div>' +
+        '<p class="title">' + esc(i.title) + '</p>' +
+        (i.gist ? '<p class="gist">' + esc(i.gist) + '</p>' : '') +
+        '<span class="go">Відкрити джерело →</span>' +
+      '</a>';
+    }
+    $("list").innerHTML = html;
+  }
+
+  function renderStatus(stateNote){
+    const el = $("upd");
+    if (stateNote) { el.innerHTML = '<span class="dot stale"></span>' + esc(stateNote); return; }
+    if (lastRun) {
+      const fresh = Date.now() - lastRun < 2 * 3600 * 1000;
+      el.innerHTML = '<span class="dot' + (fresh ? '' : ' stale') + '"></span>Оновлено: ' + esc(ago(lastRun));
+    } else {
+      el.innerHTML = '<span class="dot"></span>Стрічка підключена';
+    }
+  }
+
+  $("tabs").addEventListener("click", e => {
+    const b = e.target.closest(".tab"); if (!b) return;
+    filter = b.dataset.f;
+    document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-pressed", String(t === b)));
+    render();
+  });
+  $("q").addEventListener("input", e => { query = e.target.value; render(); });
+
+
+  async function load(path){
+    try { const r = await fetch(path + "?v=" + Date.now()); if (!r.ok) return null; return await r.json(); }
+    catch(e) { return null; }
+  }
+  function toItem(x, curated){
+    const pub = Date.parse(x.published || "");
+    const found = Date.parse(x.found || "") || pub || 0;
+    return {
+      title: String(x.title || ""), gist: String(x.gist || ""),
+      source: String(x.source || ""), url: String(x.url || ""), lang: String(x.lang || ""),
+      category: ["news","social","video"].includes(x.category) ? x.category : "news",
+      hasDate: !isNaN(pub), ts: isNaN(pub) ? found : pub, foundTs: found, curated
+    };
+  }
+  async function start(){
+    const [cur, auto] = await Promise.all([load("data/curated.json"), load("data/news.json")]);
+    const seen = new Set(), all = [];
+    for (const x of (cur || [])) { if (!seen.has(x.url)) { seen.add(x.url); all.push(toItem(x, true)); } }
+    for (const x of ((auto && auto.items) || [])) { if (!seen.has(x.url)) { seen.add(x.url); all.push(toItem(x, false)); } }
+    items = all.sort((a,b) => b.ts - a.ts);
+    const t = auto && Date.parse(auto.updated || "");
+    if (t && !isNaN(t)) lastRun = t;
+    if (!cur && !auto) renderStatus("Не вдалося завантажити стрічку");
+    else renderStatus();
+    render();
+  }
+  render();
+  start();
+  setInterval(() => { if (items.length) render(); renderStatus(); }, 60000);
+})();
+</script>
+</body>
+</html>
